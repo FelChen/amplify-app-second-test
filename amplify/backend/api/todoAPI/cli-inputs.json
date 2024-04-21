@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/todo": {
+      "name": "/todo",
+      "lambdaFunction": "amplifyapp67aa3f72",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}
