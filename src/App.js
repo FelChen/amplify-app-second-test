@@ -35,7 +35,7 @@ console.log("hey");
 function App({ signOut, user }) {
   return (
     <>
-      <h1>Hello!! {user.username}</h1>
+      <h1>Hello!!! {user.username}</h1>
       <button onClick={signOut}>Sign out</button>
     </>
   );
