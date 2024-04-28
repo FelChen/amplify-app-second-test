@@ -8,3 +8,8 @@ type Todo @model {
   name: String!
   description: String
 }
+type Player @model {
+  id: ID!
+  name: String!
+  health: Int!
+}
