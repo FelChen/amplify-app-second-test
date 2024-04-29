@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { generateClient } from 'aws-amplify/api';
 import CharacterList from "./Characters/CharacterList";
 import { createPlayer, createTodo } from '../graphql/mutations';
-import { onCreatePlayer } from '../graphql/subscriptions';
+import { onCreatePlayer, onDeletePlayer } from '../graphql/subscriptions';
 import { listPlayers } from "../graphql/queries";
 import config from "../amplifyconfiguration.json"
 
@@ -23,41 +23,30 @@ async function handleClick() {
 
 var players = await client.graphql({ query: listPlayers });
 var listOfPlayers = players.data.listPlayers.items;
-async function createCharacter(formData) {
-  console.log("heyaaaaaa");
-  // await client.graphql({
-  //     query: createPlayer,
-  //     variables:{
-  //         input:{
-  //             name: formData.get('name'),
-  //             health: formData.get('health')
-  //         }
-  //     }
-  // })
-}
 
 
-export default function DmPage(props) {
+export default function DmPage() {
 
   const [inputs, setInputs] = useState({});
   const [players, setPlayers] = useState(listOfPlayers);
-  // useEffect(() => {
-  //   const createPlayerSub = client
-  //     .graphql({ query: onCreatePlayer })
-  //     .subscribe({
-  //       next: ({ data }) => setPlayers([...players,data]),
-  //       error: (error) => console.warn(error),
-  //     });
-  //   return () => createPlayerSub.unsubscribe();
-  // }, []);
-  const createPlayerSub = client
-  .graphql({ query: onCreatePlayer })
-  .subscribe({
-    next: ({ data }) => setPlayers([...players,data]),
-    error: (error) => console.warn(error),
-  });
+  useEffect(() => {
+    const createPlayerSub = client
+      .graphql({ query: onCreatePlayer })
+      .subscribe({
+        next: ({ data }) => setPlayers(prevPlayers => [...prevPlayers, data.onCreatePlayer]),
+        error: (error) => console.warn(error),
+      });
+    const deletePlayerSub = client
+      .graphql({ query: onDeletePlayer })
+      .subscribe({
+        next: ({ data }) => setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== data.onDeletePlayer.id)),
+        error: (error) => console.warn(error),
+      });
+    return () => { createPlayerSub.unsubscribe(); deletePlayerSub.unsubscribe() };
+  }, []);
+
   const handleChange = (event) => {
-    console.log("something changed");
+    // console.log("something changed");
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({ ...values, [name]: value }))
@@ -66,7 +55,7 @@ export default function DmPage(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
     await client.graphql({
       query: createPlayer,
       variables: {
@@ -80,9 +69,9 @@ export default function DmPage(props) {
   return (
     <>
       <CharacterList players={players} />
-      <button onClick={handleClick}>
+      {/* <button onClick={handleClick}>
         Click me
-      </button>
+      </button> */}
       <div>
         <form onSubmit={handleSubmit}>
           <label>Enter name:
