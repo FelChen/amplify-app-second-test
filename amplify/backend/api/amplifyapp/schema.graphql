@@ -13,3 +13,27 @@ type Player @model {
   name: String!
   health: Int!
 }
+type Effect @model{
+  id: ID!
+  name: String!
+}
+type Character @model {
+  id: ID!
+  name: String!
+  strength: Int
+  dexterity: Int
+  magicStrength: Int
+  magicDexterity: Int
+  maxHealth: Int!
+  currentHealth: Int!
+  temporaryHealth: Int
+  temporaryArmor: Int
+  maxMana: Int
+  currentMana: Int
+  effects: [Effect!] @hasMany
+}
+type CombatState @model {
+  id: ID!
+  charactersEngaged: [Character!] @hasMany
+  currentCharacterTurn: Int!
+}
