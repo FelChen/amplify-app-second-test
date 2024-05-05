@@ -25,7 +25,7 @@ async function delCharacter(character) {
     })
 }
 
-export default function CharacterCard({ character: character }) {
+export default function CharacterCard({ character }) {
     const [editMode, setEditMode] = useState(false);
     const [editCharacter, setEditCharacter] = useState(character);
     function toggleEditMode() {
@@ -151,8 +151,6 @@ export default function CharacterCard({ character: character }) {
                                 />
                             </label>
                         </div>
-
-
                         <input type="submit" />
                     </form>
                     <button onClick={toggleEditMode}>Cancel</button>

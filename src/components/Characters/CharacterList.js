@@ -1,7 +1,7 @@
 import CharacterCard from "./CharacterCard";
 
 
-export default function CharacterList({ characters: characters }) {
+export default function CharacterList({ characters }) {
     return (
         <div>
             {characters.map((character) =>

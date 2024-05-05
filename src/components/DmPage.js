@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { generateClient } from 'aws-amplify/api';
 import CharacterList from './Characters/CharacterList';
 import CharacterCreator from "./Characters/CharacterCreator";
-import { createCharacter, createPlayer, createTodo, deleteCharacter } from '../graphql/mutations';
-import { onCreateCharacter, onCreatePlayer, onDeleteCharacter, onDeletePlayer, onUpdateCharacter } from '../graphql/subscriptions';
-import { listCharacters, listPlayers } from "../graphql/queries";
+import { onCreateCharacter, onDeleteCharacter, onUpdateCharacter } from '../graphql/subscriptions';
+import { listCharacters } from "../graphql/queries";
 import config from "../amplifyconfiguration.json"
 
 Amplify.configure(config);
@@ -38,7 +37,7 @@ export default function DmPage() {
       .subscribe({
         next: ({ data }) => {
           console.log(data);
-          setCharacters(prevCharacters => prevCharacters.map(char => char.id == data.onUpdateCharacter.id ? data.onUpdateCharacter : char))},
+          setCharacters(prevCharacters => prevCharacters.map(char => char.id === data.onUpdateCharacter.id ? data.onUpdateCharacter : char))},
         error: (error) => console.warn(error)
       })
     return () => { createCharacterSub.unsubscribe(); deleteCharacterSub.unsubscribe(); updateCharacterSub.unsubscribe() };

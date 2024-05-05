@@ -22,27 +22,27 @@ export default function ResourceBar({ maxNum = 0, currentNum, type }) {
                 break;
         }
     };
-    const Parentdiv = {
-        height: 30,
-        width: '100%',
-        backgroundColor: 'whitesmoke',
-        borderRadius: 40,
-        margin: 50
-      }
+    // const Parentdiv = {
+    //     height: 30,
+    //     width: '100%',
+    //     backgroundColor: 'whitesmoke',
+    //     borderRadius: 40,
+    //     margin: 50
+    //   }
      
-      const Childdiv = {
-        height: '100%',
-        width: `${100*currentNum/maxNum}%`,
-        backgroundColor: "green",
-       borderRadius:40,
-        textAlign: 'right'
-      }
+    //   const Childdiv = {
+    //     height: '100%',
+    //     width: `${100*currentNum/maxNum}%`,
+    //     backgroundColor: "green",
+    //    borderRadius:40,
+    //     textAlign: 'right'
+    //   }
      
-      const progresstext = {
-        padding: 10,
-        color: 'black',
-        fontWeight: 900
-      }
+    //   const progresstext = {
+    //     padding: 10,
+    //     color: 'black',
+    //     fontWeight: 900
+    //   }
     return (
         <div>
             {renderSwitch(type)}
