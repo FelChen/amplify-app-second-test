@@ -13,10 +13,58 @@ type Player @model {
   name: String!
   health: Int!
 }
-type Effect @model{
+
+type Modifier @model{
+  id: ID!
+  name: String!
+  description: String!
+  strengthMod: Int
+  dexterityMod: Int
+  magicStrengthMod: Int
+  magicDexterityMod: Int
+  maxHealthMod: Int
+  maxManaMod: Int
+}
+
+enum StatType {
+  HEALTH
+  MANA
+}
+type calculationInput @model{
+  id: ID!
+
+}
+
+type Ability @model{
+  id: ID!
+  name: String!
+  description: String!
+  cost: Int!
+  costType: StatType!
+  toHit: Calculation!
+  toDodge: Calculation!
+  damage: Calculation!
+  modifiers: [Modifier!] @hasMany
+}
+
+type abilityCast @model{
+  id: ID!
+  caster: Character!
+  targets: [Character!] @hasMany
+  ability: Ability!
+}
+
+interface Calculation{
   id: ID!
   name: String!
 }
+type normalCalculation implements Calculation @model{
+  id: ID!
+  name: String!
+  mean: String!
+  standardDeviation: String!
+}
+
 type Character @model {
   id: ID!
   name: String!
@@ -30,7 +78,7 @@ type Character @model {
   temporaryArmor: Int
   maxMana: Int
   currentMana: Int
-  effects: [Effect!] @hasMany
+  modifiers: [Modifier!] @hasMany
 }
 type CombatState @model {
   id: ID!

@@ -1,11 +1,12 @@
-import { deleteCharacter, updateCharacter } from "../../graphql/mutations";
 import { Amplify } from "aws-amplify";
 import { generateClient } from "aws-amplify/api";
 import ResourceBar from "./ResourceBar";
 import { RESOURCE_TYPES } from "../../enum/enums";
 import config from "../../amplifyconfiguration.json"
 import { useState } from "react";
-import { Stack } from "react-bootstrap";
+import { changeHealth, changeMana, delChar, updateChar } from "../../utils/characterUtils";
+
+// import  from "react-bootstrap/Row";
 
 const characterCardStyle = {
     background: 'hsl(0, 75%, 85%)',
@@ -14,20 +15,14 @@ const characterCardStyle = {
 
 Amplify.configure(config);
 const client = generateClient();
-async function delCharacter(character) {
-    await client.graphql({
-        query: deleteCharacter,
-        variables: {
-            input: {
-                id: character.id
-            }
-        }
-    })
-}
 
 export default function CharacterCard({ character }) {
     const [editMode, setEditMode] = useState(false);
     const [editCharacter, setEditCharacter] = useState(character);
+    const [editHealthMana, setEditHealthMana] = useState({
+        health: 0,
+        mana: 0
+    });
     function toggleEditMode() {
         setEditMode(!editMode);
     }
@@ -36,36 +31,53 @@ export default function CharacterCard({ character }) {
         const value = event.target.value;
         setEditCharacter(values => ({ ...values, [name]: value }))
     }
-    const updateChar = async (event) =>{
+    const handleHealthManaChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setEditHealthMana(values => ({ ...values, [name]: value }))
+    }
+    const updateChars = async (event) => {
         event.preventDefault();
-        await client.graphql({
-            query: updateCharacter,
-            variables: {
-                input: {
-                    id: editCharacter.id,
-                    name: editCharacter.name,
-                    strength: editCharacter.strength,
-                    dexterity: editCharacter.dexterity,
-                    magicStrength: editCharacter.magicStrength,
-                    magicDexterity: editCharacter.magicDexterity,
-                    maxHealth: editCharacter.maxHealth,
-                    maxMana: editCharacter.maxMana,
-                }
-            }
-        })
+        updateChar(editCharacter);
+        toggleEditMode();
+    }
+    const updateCharHealthMana = async (event) => {
+        event.preventDefault();
+        changeHealth(editCharacter, editHealthMana.health);
+        changeMana(editCharacter, editHealthMana.mana);
     }
     return (
         <div style={characterCardStyle}>
             {!editMode ? <div>
                 <h1>{character.name}</h1>
-                <Stack gap={4}>
-                    <ResourceBar currentNum={character.currentHealth} maxNum={character.maxHealth} type={RESOURCE_TYPES.Health} />
-                    {character.temporaryHealth > 0 ?
-                        <ResourceBar currentNum={character.temporaryHealth} type={RESOURCE_TYPES.TemporaryHealth} /> : null}
-                    {character.temporaryArmor > 0 ?
-                        <ResourceBar currentNum={character.temporaryArmor} type={RESOURCE_TYPES.Armor} /> : null}
-                    <ResourceBar currentNum={character.currentMana} maxNum={character.maxMana} type={RESOURCE_TYPES.Mana} />
-                </Stack>
+
+                <ResourceBar currentNum={character.currentHealth} maxNum={character.maxHealth} type={RESOURCE_TYPES.Health} />
+                {character.temporaryHealth > 0 ?
+                    <ResourceBar currentNum={character.temporaryHealth} type={RESOURCE_TYPES.TemporaryHealth} /> : null}
+                {character.temporaryArmor > 0 ?
+                    <ResourceBar currentNum={character.temporaryArmor} type={RESOURCE_TYPES.Armor} /> : null}
+                <ResourceBar currentNum={character.currentMana} maxNum={character.maxMana} type={RESOURCE_TYPES.Mana} />
+                <div>
+                    <label>Enter change to health:
+                        <input
+                            type="number"
+                            name="health"
+                            value={editHealthMana.health}
+                            onChange={handleHealthManaChange}
+                        />
+                    </label>
+                </div>
+                <div>
+                    <label>Enter change to mana:
+                        <input
+                            type="number"
+                            name="mana"
+                            value={editHealthMana.mana}
+                            onChange={handleHealthManaChange}
+                        />
+                    </label>
+                </div>
+                <button onClick={updateCharHealthMana}>Change health/mana</button>
                 <hr></hr>
                 Strength: {character.strength}
                 <br />
@@ -75,12 +87,15 @@ export default function CharacterCard({ character }) {
                 <br />
                 Magic Dexterity: {character.magicDexterity}
                 <br />
+
+
                 <button onClick={toggleEditMode}>Edit Stats</button>
-                <button onClick={() => delCharacter(character)}>Delete</button>
+                {/* <button onClick={() => delCharacter(character)}>Delete</button> */}
+                <button onClick={() => delChar(character)}>Delete</button>
             </div>
                 : <div>
                     <p>editing</p>
-                    <form onSubmit={updateChar}>
+                    <form onSubmit={updateChars}>
                         <div>
                             <label>Enter name:
                                 <input
@@ -154,7 +169,8 @@ export default function CharacterCard({ character }) {
                         <input type="submit" />
                     </form>
                     <button onClick={toggleEditMode}>Cancel</button>
-                    <button onClick={() => delCharacter(character)}>Delete</button>
+                    <button onClick={() => delChar(character)}>Delete</button>
+                    {/* <button onClick={() => delCharacter(character)}>Delete</button> */}
                 </div>
             }
 

@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { RESOURCE_TYPES } from "../../enum/enums";
 
-
+const ResourceBarStyle = {
+    display: 'flex'
+}
 
 export default function ResourceBar({ maxNum = 0, currentNum, type }) {
     
@@ -44,10 +46,10 @@ export default function ResourceBar({ maxNum = 0, currentNum, type }) {
     //     fontWeight: 900
     //   }
     return (
-        <div>
-            {renderSwitch(type)}
-
-            {type}: {currentNum} / {maxNum}
+        <div style={ResourceBarStyle}>
+            {/* {renderSwitch(type)} */}
+            <p>{type}: {currentNum} / {maxNum}</p>
+            
             {/* <div style={Parentdiv}>
       <div style={Childdiv}>
         <span style={progresstext}>{`${100*currentNum/maxNum}%`}</span>
