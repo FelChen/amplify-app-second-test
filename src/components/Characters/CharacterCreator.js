@@ -46,8 +46,7 @@ export default function CharacterCreator() {
           temporaryHealth: 0,
           temporaryArmor: 0,
           maxMana: inputs.mana ?? 0,
-          currentMana: inputs.mana ?? 0,
-          testing: [2,6]
+          currentMana: inputs.mana ?? 0
         }
       }
     })
