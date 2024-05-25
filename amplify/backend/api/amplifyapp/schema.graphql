@@ -1,13 +1,7 @@
 # This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/react/build-a-backend/graphqlapi/customize-authorization-rules/
-input AMPLIFY {
-  globalAuthRule: AuthRule = { allow: public }
-} # FOR TESTING ONLY!
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
-}
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
 type Player @model {
   id: ID!
   name: String!
@@ -30,9 +24,8 @@ enum StatType {
   HEALTH
   MANA
 }
-type calculationInput @model{
-  id: ID!
-
+enum DistributionType {
+  NORMAL
 }
 
 type Ability @model{
@@ -41,26 +34,23 @@ type Ability @model{
   description: String!
   cost: Int!
   costType: StatType!
-  toHit: Calculation!
-  toDodge: Calculation!
-  damage: Calculation!
-  modifiers: [Modifier!] @hasMany
+  toHitId: String!
+  toDodgeId: String!
+  damageId: String!
+  modifiers: [String!]
 }
-
 type abilityCast @model{
   id: ID!
-  caster: Character!
-  targets: [Character!] @hasMany
-  ability: Ability!
+  casterName: String!
+  targetNames: [String!]
+  toHit: Float!
+  toDodge: [Float!]
+  damage: Int!
+  abilityName: String!
 }
-
-interface Calculation{
+type Calculation @model {
   id: ID!
-  name: String!
-}
-type normalCalculation implements Calculation @model{
-  id: ID!
-  name: String!
+  distributionType: DistributionType!
   mean: String!
   standardDeviation: String!
 }
@@ -78,10 +68,10 @@ type Character @model {
   temporaryArmor: Int
   maxMana: Int
   currentMana: Int
-  modifiers: [Modifier!] @hasMany
+  modifiers: [String]
 }
 type CombatState @model {
   id: ID!
-  charactersEngaged: [Character!] @hasMany
+  charactersEngaged: [String]
   currentCharacterTurn: Int!
 }

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "amplifyapp80fed1ee_identitypool_80fed1ee",
+    "identityPoolName": "amplifyapp2e70add3_identitypool_2e70add3",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "amplif80fed1ee",
-    "userPoolName": "amplifyapp80fed1ee_userpool_80fed1ee",
+    "resourceNameTruncated": "amplif2e70add3",
+    "userPoolName": "amplifyapp2e70add3_userpool_2e70add3",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,38 +31,18 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "amplif80fed1ee_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "amplif2e70add3_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "80fed1ee",
-    "resourceName": "amplifyapp80fed1ee",
+    "sharedId": "2e70add3",
+    "resourceName": "amplifyapp2e70add3",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "defaultSocial",
+    "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": [],
-    "hostedUI": true,
-    "hostedUIDomainName": "amplifyappdc68ff03-dc68ff03",
-    "authProvidersUserPool": [],
-    "hostedUIProviderMeta": "[]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
-    "authProviders": []
+    "useEnabledMfas": true
   }
 }

@@ -1,51 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createTodo = /* GraphQL */ `
-  mutation CreateTodo(
-    $input: CreateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    createTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateTodo = /* GraphQL */ `
-  mutation UpdateTodo(
-    $input: UpdateTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    updateTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteTodo = /* GraphQL */ `
-  mutation DeleteTodo(
-    $input: DeleteTodoInput!
-    $condition: ModelTodoConditionInput
-  ) {
-    deleteTodo(input: $input, condition: $condition) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const createPlayer = /* GraphQL */ `
   mutation CreatePlayer(
     $input: CreatePlayerInput!
@@ -91,47 +46,233 @@ export const deletePlayer = /* GraphQL */ `
     }
   }
 `;
-export const createEffect = /* GraphQL */ `
-  mutation CreateEffect(
-    $input: CreateEffectInput!
-    $condition: ModelEffectConditionInput
+export const createModifier = /* GraphQL */ `
+  mutation CreateModifier(
+    $input: CreateModifierInput!
+    $condition: ModelModifierConditionInput
   ) {
-    createEffect(input: $input, condition: $condition) {
+    createModifier(input: $input, condition: $condition) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
       __typename
     }
   }
 `;
-export const updateEffect = /* GraphQL */ `
-  mutation UpdateEffect(
-    $input: UpdateEffectInput!
-    $condition: ModelEffectConditionInput
+export const updateModifier = /* GraphQL */ `
+  mutation UpdateModifier(
+    $input: UpdateModifierInput!
+    $condition: ModelModifierConditionInput
   ) {
-    updateEffect(input: $input, condition: $condition) {
+    updateModifier(input: $input, condition: $condition) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
       __typename
     }
   }
 `;
-export const deleteEffect = /* GraphQL */ `
-  mutation DeleteEffect(
-    $input: DeleteEffectInput!
-    $condition: ModelEffectConditionInput
+export const deleteModifier = /* GraphQL */ `
+  mutation DeleteModifier(
+    $input: DeleteModifierInput!
+    $condition: ModelModifierConditionInput
   ) {
-    deleteEffect(input: $input, condition: $condition) {
+    deleteModifier(input: $input, condition: $condition) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
+      __typename
+    }
+  }
+`;
+export const createAbility = /* GraphQL */ `
+  mutation CreateAbility(
+    $input: CreateAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    createAbility(input: $input, condition: $condition) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateAbility = /* GraphQL */ `
+  mutation UpdateAbility(
+    $input: UpdateAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    updateAbility(input: $input, condition: $condition) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteAbility = /* GraphQL */ `
+  mutation DeleteAbility(
+    $input: DeleteAbilityInput!
+    $condition: ModelAbilityConditionInput
+  ) {
+    deleteAbility(input: $input, condition: $condition) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createAbilityCast = /* GraphQL */ `
+  mutation CreateAbilityCast(
+    $input: CreateAbilityCastInput!
+    $condition: ModelAbilityCastConditionInput
+  ) {
+    createAbilityCast(input: $input, condition: $condition) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateAbilityCast = /* GraphQL */ `
+  mutation UpdateAbilityCast(
+    $input: UpdateAbilityCastInput!
+    $condition: ModelAbilityCastConditionInput
+  ) {
+    updateAbilityCast(input: $input, condition: $condition) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteAbilityCast = /* GraphQL */ `
+  mutation DeleteAbilityCast(
+    $input: DeleteAbilityCastInput!
+    $condition: ModelAbilityCastConditionInput
+  ) {
+    deleteAbilityCast(input: $input, condition: $condition) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const createCalculation = /* GraphQL */ `
+  mutation CreateCalculation(
+    $input: CreateCalculationInput!
+    $condition: ModelCalculationConditionInput
+  ) {
+    createCalculation(input: $input, condition: $condition) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const updateCalculation = /* GraphQL */ `
+  mutation UpdateCalculation(
+    $input: UpdateCalculationInput!
+    $condition: ModelCalculationConditionInput
+  ) {
+    updateCalculation(input: $input, condition: $condition) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const deleteCalculation = /* GraphQL */ `
+  mutation DeleteCalculation(
+    $input: DeleteCalculationInput!
+    $condition: ModelCalculationConditionInput
+  ) {
+    deleteCalculation(input: $input, condition: $condition) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
       __typename
     }
   }
@@ -154,13 +295,9 @@ export const createCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -183,13 +320,9 @@ export const updateCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -212,13 +345,9 @@ export const deleteCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -230,10 +359,7 @@ export const createCombatState = /* GraphQL */ `
   ) {
     createCombatState(input: $input, condition: $condition) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt
@@ -248,10 +374,7 @@ export const updateCombatState = /* GraphQL */ `
   ) {
     updateCombatState(input: $input, condition: $condition) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt
@@ -266,10 +389,7 @@ export const deleteCombatState = /* GraphQL */ `
   ) {
     deleteCombatState(input: $input, condition: $condition) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt

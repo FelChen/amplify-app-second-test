@@ -1,38 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getTodo = /* GraphQL */ `
-  query GetTodo($id: ID!) {
-    getTodo(id: $id) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listTodos = /* GraphQL */ `
-  query ListTodos(
-    $filter: ModelTodoFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        description
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
 export const getPlayer = /* GraphQL */ `
   query GetPlayer($id: ID!) {
     getPlayer(id: $id) {
@@ -65,31 +33,161 @@ export const listPlayers = /* GraphQL */ `
     }
   }
 `;
-export const getEffect = /* GraphQL */ `
-  query GetEffect($id: ID!) {
-    getEffect(id: $id) {
+export const getModifier = /* GraphQL */ `
+  query GetModifier($id: ID!) {
+    getModifier(id: $id) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
       __typename
     }
   }
 `;
-export const listEffects = /* GraphQL */ `
-  query ListEffects(
-    $filter: ModelEffectFilterInput
+export const listModifiers = /* GraphQL */ `
+  query ListModifiers(
+    $filter: ModelModifierFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listEffects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listModifiers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
+        description
+        strengthMod
+        dexterityMod
+        magicStrengthMod
+        magicDexterityMod
+        maxHealthMod
+        maxManaMod
         createdAt
         updatedAt
-        characterEffectsId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getAbility = /* GraphQL */ `
+  query GetAbility($id: ID!) {
+    getAbility(id: $id) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listAbilities = /* GraphQL */ `
+  query ListAbilities(
+    $filter: ModelAbilityFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAbilities(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        name
+        description
+        cost
+        costType
+        toHitId
+        toDodgeId
+        damageId
+        modifiers
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getAbilityCast = /* GraphQL */ `
+  query GetAbilityCast($id: ID!) {
+    getAbilityCast(id: $id) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listAbilityCasts = /* GraphQL */ `
+  query ListAbilityCasts(
+    $filter: ModelAbilityCastFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAbilityCasts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        casterName
+        targetNames
+        toHit
+        toDodge
+        damage
+        abilityName
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getCalculation = /* GraphQL */ `
+  query GetCalculation($id: ID!) {
+    getCalculation(id: $id) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listCalculations = /* GraphQL */ `
+  query ListCalculations(
+    $filter: ModelCalculationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listCalculations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        distributionType
+        mean
+        standardDeviation
+        createdAt
+        updatedAt
         __typename
       }
       nextToken
@@ -112,13 +210,9 @@ export const getCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -143,9 +237,9 @@ export const listCharacters = /* GraphQL */ `
         temporaryArmor
         maxMana
         currentMana
+        modifiers
         createdAt
         updatedAt
-        combatStateCharactersEngagedId
         __typename
       }
       nextToken
@@ -157,10 +251,7 @@ export const getCombatState = /* GraphQL */ `
   query GetCombatState($id: ID!) {
     getCombatState(id: $id) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt
@@ -177,6 +268,7 @@ export const listCombatStates = /* GraphQL */ `
     listCombatStates(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        charactersEngaged
         currentCharacterTurn
         createdAt
         updatedAt

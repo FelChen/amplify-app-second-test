@@ -1,42 +1,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateTodo = /* GraphQL */ `
-  subscription OnCreateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onCreateTodo(filter: $filter) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateTodo = /* GraphQL */ `
-  subscription OnUpdateTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onUpdateTodo(filter: $filter) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteTodo = /* GraphQL */ `
-  subscription OnDeleteTodo($filter: ModelSubscriptionTodoFilterInput) {
-    onDeleteTodo(filter: $filter) {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
 export const onCreatePlayer = /* GraphQL */ `
   subscription OnCreatePlayer($filter: ModelSubscriptionPlayerFilterInput) {
     onCreatePlayer(filter: $filter) {
@@ -73,38 +37,209 @@ export const onDeletePlayer = /* GraphQL */ `
     }
   }
 `;
-export const onCreateEffect = /* GraphQL */ `
-  subscription OnCreateEffect($filter: ModelSubscriptionEffectFilterInput) {
-    onCreateEffect(filter: $filter) {
+export const onCreateModifier = /* GraphQL */ `
+  subscription OnCreateModifier($filter: ModelSubscriptionModifierFilterInput) {
+    onCreateModifier(filter: $filter) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
       __typename
     }
   }
 `;
-export const onUpdateEffect = /* GraphQL */ `
-  subscription OnUpdateEffect($filter: ModelSubscriptionEffectFilterInput) {
-    onUpdateEffect(filter: $filter) {
+export const onUpdateModifier = /* GraphQL */ `
+  subscription OnUpdateModifier($filter: ModelSubscriptionModifierFilterInput) {
+    onUpdateModifier(filter: $filter) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
       __typename
     }
   }
 `;
-export const onDeleteEffect = /* GraphQL */ `
-  subscription OnDeleteEffect($filter: ModelSubscriptionEffectFilterInput) {
-    onDeleteEffect(filter: $filter) {
+export const onDeleteModifier = /* GraphQL */ `
+  subscription OnDeleteModifier($filter: ModelSubscriptionModifierFilterInput) {
+    onDeleteModifier(filter: $filter) {
       id
       name
+      description
+      strengthMod
+      dexterityMod
+      magicStrengthMod
+      magicDexterityMod
+      maxHealthMod
+      maxManaMod
       createdAt
       updatedAt
-      characterEffectsId
+      __typename
+    }
+  }
+`;
+export const onCreateAbility = /* GraphQL */ `
+  subscription OnCreateAbility($filter: ModelSubscriptionAbilityFilterInput) {
+    onCreateAbility(filter: $filter) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateAbility = /* GraphQL */ `
+  subscription OnUpdateAbility($filter: ModelSubscriptionAbilityFilterInput) {
+    onUpdateAbility(filter: $filter) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteAbility = /* GraphQL */ `
+  subscription OnDeleteAbility($filter: ModelSubscriptionAbilityFilterInput) {
+    onDeleteAbility(filter: $filter) {
+      id
+      name
+      description
+      cost
+      costType
+      toHitId
+      toDodgeId
+      damageId
+      modifiers
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateAbilityCast = /* GraphQL */ `
+  subscription OnCreateAbilityCast(
+    $filter: ModelSubscriptionAbilityCastFilterInput
+  ) {
+    onCreateAbilityCast(filter: $filter) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateAbilityCast = /* GraphQL */ `
+  subscription OnUpdateAbilityCast(
+    $filter: ModelSubscriptionAbilityCastFilterInput
+  ) {
+    onUpdateAbilityCast(filter: $filter) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteAbilityCast = /* GraphQL */ `
+  subscription OnDeleteAbilityCast(
+    $filter: ModelSubscriptionAbilityCastFilterInput
+  ) {
+    onDeleteAbilityCast(filter: $filter) {
+      id
+      casterName
+      targetNames
+      toHit
+      toDodge
+      damage
+      abilityName
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateCalculation = /* GraphQL */ `
+  subscription OnCreateCalculation(
+    $filter: ModelSubscriptionCalculationFilterInput
+  ) {
+    onCreateCalculation(filter: $filter) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateCalculation = /* GraphQL */ `
+  subscription OnUpdateCalculation(
+    $filter: ModelSubscriptionCalculationFilterInput
+  ) {
+    onUpdateCalculation(filter: $filter) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteCalculation = /* GraphQL */ `
+  subscription OnDeleteCalculation(
+    $filter: ModelSubscriptionCalculationFilterInput
+  ) {
+    onDeleteCalculation(filter: $filter) {
+      id
+      distributionType
+      mean
+      standardDeviation
+      createdAt
+      updatedAt
       __typename
     }
   }
@@ -126,13 +261,9 @@ export const onCreateCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -154,13 +285,9 @@ export const onUpdateCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -182,13 +309,9 @@ export const onDeleteCharacter = /* GraphQL */ `
       temporaryArmor
       maxMana
       currentMana
-      effects {
-        nextToken
-        __typename
-      }
+      modifiers
       createdAt
       updatedAt
-      combatStateCharactersEngagedId
       __typename
     }
   }
@@ -199,10 +322,7 @@ export const onCreateCombatState = /* GraphQL */ `
   ) {
     onCreateCombatState(filter: $filter) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt
@@ -216,10 +336,7 @@ export const onUpdateCombatState = /* GraphQL */ `
   ) {
     onUpdateCombatState(filter: $filter) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt
@@ -233,10 +350,7 @@ export const onDeleteCombatState = /* GraphQL */ `
   ) {
     onDeleteCombatState(filter: $filter) {
       id
-      charactersEngaged {
-        nextToken
-        __typename
-      }
+      charactersEngaged
       currentCharacterTurn
       createdAt
       updatedAt

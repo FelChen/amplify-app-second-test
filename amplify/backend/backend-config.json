@@ -1,28 +1,15 @@
 {
   "api": {
     "amplifyapp": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "amplifyapp80fed1ee"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authamplifyapp80fed1ee"
-              }
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDate": "2025-05-17T00:51:20.922Z",
+              "apiKeyExpirationDays": 365,
+              "description": ""
             },
             "authenticationType": "API_KEY"
           }
@@ -30,24 +17,10 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
-    },
-    "todoAPI": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "amplifyapp67aa3f72"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
     }
   },
   "auth": {
-    "amplifyapp80fed1ee": {
+    "amplifyapp2e70add3": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -72,31 +45,6 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
-    }
-  },
-  "function": {
-    "amplifyapp67aa3f72": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_amplifyapp67aa3f72_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "amplifyapp67aa3f72"
-        }
-      ]
-    },
-    "AMPLIFY_function_amplifyapp67aa3f72_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "amplifyapp67aa3f72"
-        }
-      ]
     }
   }
 }

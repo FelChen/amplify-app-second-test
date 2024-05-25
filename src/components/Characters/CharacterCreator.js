@@ -30,7 +30,7 @@ export default function CharacterCreator() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
 
     await client.graphql({
       query: createCharacter,
@@ -46,7 +46,8 @@ export default function CharacterCreator() {
           temporaryHealth: 0,
           temporaryArmor: 0,
           maxMana: inputs.mana ?? 0,
-          currentMana: inputs.mana ?? 0
+          currentMana: inputs.mana ?? 0,
+          testing: [2,6]
         }
       }
     })

@@ -1,18 +1,12 @@
 import * as d3 from "d3";
 import { useState } from "react";
+import { normalDistribution } from "../../utils/calculations";
 
 const mystyle = {
     background: 'aliceblue'
 }
 
-function gaussianRandom(mean = 0, stdev = 1) {
-    const u = 1 - Math.random(); // Converting [0,1) to (0,1]
-    const v = Math.random();
-    const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
 
-    // Transform to the desired mean and standard deviation:
-    return z * stdev + parseFloat(mean);
-}
 
 export default function NormalDistribution() {
     const [normalResult, setNormalResult] = useState(0);
@@ -27,7 +21,7 @@ export default function NormalDistribution() {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setNormalResult(gaussianRandom(inputs.mean, inputs.standardDeviation));
+        setNormalResult(normalDistribution(inputs.mean, inputs.standardDeviation));
     }
     const [data, setData] = useState(() => d3.ticks(-2, 2, 200).map(Math.sin));
     var width = 640

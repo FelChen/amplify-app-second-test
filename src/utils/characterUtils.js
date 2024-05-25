@@ -5,7 +5,7 @@ import config from "../amplifyconfiguration.json"
 
 Amplify.configure(config);
 const client = generateClient();
-
+// TODO: delete modifiers prior to deleting character
 export async function delChar(character) {
     await client.graphql({
         query: deleteCharacter,
@@ -38,7 +38,11 @@ export async function updateChar(character) {
         }
     });
 }
+// TODO: figure out how to deal with modifiers
+// maybe add a function which gets the modified value health
+// health probably shouldn't ever change
 export async function changeHealth(character, delta) {
+    // TODO: add error handling
     var newChar = character;
     newChar.currentHealth += parseInt(delta);
     await client.graphql({
@@ -52,6 +56,7 @@ export async function changeHealth(character, delta) {
     });
 }
 export async function changeMana(character, delta) {
+    // TODO: add error handling
     var newChar = character;
     newChar.currentMana += parseInt(delta);
     await client.graphql({
@@ -65,6 +70,7 @@ export async function changeMana(character, delta) {
     });
 }
 export async function changeArmor(character, delta) {
+    // TODO: add error handling
     var newChar = character;
     newChar.temporaryArmor += parseInt(delta);
     await client.graphql({
@@ -78,6 +84,7 @@ export async function changeArmor(character, delta) {
     });
 }
 export async function changeTemporaryHealth(character, delta) {
+    // TODO: add error handling
     var newChar = character;
     newChar.temporaryHealth += parseInt(delta);
     await client.graphql({
